@@ -2,13 +2,25 @@ import pygame
 
 from Player import *
 
+global bottomPlatform
+
+stage = []
 
 def clearScreen():
     pygame.draw.rect(screen, pygame.Color(0, 0, 0), (0, 0, 1280, 720))
 
+def drawStage():
+    bottomPlatform = pygame.Rect(320, 500, 600, 100)
+    pygame.draw.rect(screen, pygame.Color(0, 255, 255), bottomPlatform, 0)
+    
+    
+def checkCollision():
+    print("Collision!")
 
-def drawMap():
-    pygame.draw.rect(200, 500, 320, 300)
+
+
+
+
 
 
 # start of program
@@ -25,6 +37,7 @@ while not gameOver:
             gameOver = True
 
     clearScreen()
+    drawStage()
     player.draw()
     player.movement()
 

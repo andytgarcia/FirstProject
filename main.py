@@ -1,7 +1,15 @@
 import pygame
 
-
+xvel = 5
+yvel = 7
 from Player import *
+
+
+
+
+
+
+
 
 def clearScreen():
     pygame.draw.rect(screen, pygame.Color(0, 0, 0), (0, 0, 1280, 720))
@@ -29,13 +37,14 @@ FPS = 60  # 60 frames per second
 fpsClock = pygame.time.Clock()
 screen = pygame.display.set_mode((1280, 720))
 gameOver = False
-player = Player(screen, 640, 360)
+player = Player(screen, 640, 360, xvel, yvel)
 
 while not gameOver:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameOver = True
 
+    player.gravity()
     clearScreen()
     handleStage()
     player.draw()
